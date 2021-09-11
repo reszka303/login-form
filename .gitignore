@@ -2,3 +2,5 @@
 /target
 /login-form.iml
 /src/test
+/.gitignore
+/pom.xml
