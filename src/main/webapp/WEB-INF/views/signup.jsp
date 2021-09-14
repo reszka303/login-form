@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -22,6 +24,11 @@
                 <label>Password</label>
             </div>
             <input class="user-signup-button" type="submit" value="Signup">
+            <div>
+                <c:forEach var="users" items="${applicationScope.users}">
+                    <li><c:out value="${users.username} - ${users.email} - ${users.password}"/></li>
+                </c:forEach>
+            </div>
         </form>
     </div>
 </body>

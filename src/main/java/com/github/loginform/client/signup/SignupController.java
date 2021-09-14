@@ -7,10 +7,17 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/signup")
 public class SignupController extends HttpServlet {
     private final UserService userService = new UserService();
+
+    @Override
+    public void init() {
+        getServletContext().setAttribute("users", new ArrayList<UserRegistration>());
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,8 +27,9 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserRegistration userRegistration = getUserData(request);
-        userService.register(userRegistration);
-        response.sendRedirect(request.getContextPath());
+        List<UserRegistration> users = (List<UserRegistration>) getServletContext().getAttribute("users");
+        users.add(userRegistration);
+        request.getRequestDispatcher("WEB-INF/views/signup.jsp").forward(request, response);
     }
 
     private UserRegistration getUserData(HttpServletRequest request) {

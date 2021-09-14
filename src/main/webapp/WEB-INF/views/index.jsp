@@ -1,9 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/forms.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/forms.css">
 </head>
 <body>
    <div class="center">
@@ -20,7 +21,7 @@
            <div class="pass">Forgot Password?</div>
            <input type="submit" value="Login">
            <div class="signup_link">
-               Not a member? <a href="#">Signup</a>
+               Not a member? <a href="${pageContext.request.contextPath}/signup">Signup</a>
            </div>
        </form>
    </div>
