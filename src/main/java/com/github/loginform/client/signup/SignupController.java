@@ -12,7 +12,7 @@ import java.util.List;
 
 @WebServlet("/signup")
 public class SignupController extends HttpServlet {
-    private final UserService userService = new UserService();
+//    private final UserService userService = new UserService();
 
     @Override
     public void init() {
@@ -28,8 +28,21 @@ public class SignupController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserRegistration userRegistration = getUserData(request);
         List<UserRegistration> users = (List<UserRegistration>) getServletContext().getAttribute("users");
-        users.add(userRegistration);
-        request.getRequestDispatcher("WEB-INF/views/signup.jsp").forward(request, response);
+        if (validateParameters(userRegistration, users)) {
+            response.sendRedirect("signupSuccess");
+            users.add(userRegistration);
+        } else {
+            response.sendRedirect("signupError");
+        }
+    }
+
+    private boolean validateParameters(UserRegistration userRegistration, List<UserRegistration> users) {
+        for (UserRegistration user : users) {
+            if (user.getUsername().equals(userRegistration.getUsername())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private UserRegistration getUserData(HttpServletRequest request) {

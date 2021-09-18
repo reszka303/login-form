@@ -10,7 +10,7 @@
 <body>
     <div class="center">
         <h1>Signup</h1>
-        <form action="#" method="post">
+        <form action="${pageContext.request.contextPath}/signup" method="post">
             <div class="txt_field">
                 <input name="username" type="text" required>
                 <label>Username</label>
