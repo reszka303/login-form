@@ -29,10 +29,10 @@ public class SignupController extends HttpServlet {
         UserRegistration userRegistration = getUserData(request);
         List<UserRegistration> users = (List<UserRegistration>) getServletContext().getAttribute("users");
         if (validateParameters(userRegistration, users)) {
-            response.sendRedirect("signupSuccess");
+            response.sendRedirect("signup-success");
             users.add(userRegistration);
         } else {
-            response.sendRedirect("signupError");
+            response.sendRedirect("signup-error");
         }
     }
 

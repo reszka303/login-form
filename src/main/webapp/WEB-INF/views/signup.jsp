@@ -11,20 +11,20 @@
     <div class="center">
         <h1>Signup</h1>
         <form action="${pageContext.request.contextPath}/signup" method="post">
-            <div class="txt_field">
+            <div class="txt-field">
                 <input name="username" type="text" required>
                 <label>Username</label>
             </div>
-            <div class="txt_field">
+            <div class="txt-field">
                 <input name="email" type="email" required>
                 <label>Email</label>
             </div>
-            <div class="txt_field">
+            <div class="txt-field">
                 <input name="pass" type="password" required>
                 <label>Password</label>
             </div>
             <input class="user-signup-button" type="submit" value="Signup">
-            <div>
+            <div class="users-list">
                 <c:forEach var="users" items="${applicationScope.users}">
                     <li><c:out value="${users.username} - ${users.email} - ${users.password}"/></li>
                 </c:forEach>
