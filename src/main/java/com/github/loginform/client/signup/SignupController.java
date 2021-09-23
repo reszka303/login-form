@@ -29,7 +29,7 @@ public class SignupController extends HttpServlet {
         UserRegistration userRegistration = getUserData(request);
         List<UserRegistration> users = (List<UserRegistration>) getServletContext().getAttribute("users");
         userService.register(userRegistration);
-        if (validateParameters(userRegistration, users)) {
+        if (checkIfParameterIsUnique(userRegistration, users)) {
             response.sendRedirect("signup-success");
             users.add(userRegistration);
             ServletContext servletContext = getServletContext();
@@ -39,9 +39,10 @@ public class SignupController extends HttpServlet {
         }
     }
 
-    private boolean validateParameters(UserRegistration userRegistration, List<UserRegistration> users) {
+    private boolean checkIfParameterIsUnique(UserRegistration userRegistration, List<UserRegistration> users) {
         for (UserRegistration user : users) {
-            if (user.getUsername().equals(userRegistration.getUsername())) {
+            if (user.getUsername().equals(userRegistration.getUsername()) ||
+            user.getEmail().equals(userRegistration.getEmail())) {
                 return false;
             }
         }
@@ -51,7 +52,7 @@ public class SignupController extends HttpServlet {
     private UserRegistration getUserData(HttpServletRequest request) {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
-        String password = request.getParameter("pass");
+        String password = request.getParameter("password");
         return new UserRegistration(username, email, password);
     }
 }

@@ -1,4 +1,4 @@
-package com.github.loginform.client.signup;
+package com.github.loginform.client.authentication;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -6,10 +6,10 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet("/signup-success")
-public class SignupSuccessController extends HttpServlet {
+@WebServlet("/login-success")
+public class LoginSuccessController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/views/signup-success.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/views/login-success.jsp").forward(request, response);
     }
 }

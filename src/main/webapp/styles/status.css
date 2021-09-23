@@ -16,7 +16,7 @@ body {
     border-radius: 10px;
 }
 
-.center h1 {
+.center h2 {
     text-align: center;
     padding: 0 0 20px 0;
     color: #adadad;
@@ -28,6 +28,7 @@ body {
     color: #adadad;
 }
 
+
 input[type="submit"] {
     width: 90%;
     height: 50px;
@@ -35,12 +36,17 @@ input[type="submit"] {
     background: linear-gradient(120deg, #8e44ad, #2980b9);
     border-radius: 25px;
     font-size: 18px;
-    color: #e9f4fb;
+    color: #ffe4c4;
     font-weight: 700;
     cursor: pointer;
     outline: none;
 }
 
-.back-to-signup-page {
+input[type="submit"]:hover {
+    border-color: #ff0000;
+    transition: -5s;
+}
+
+.back-to-page {
     margin: -5px 0 30px 20px;
 }

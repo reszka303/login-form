@@ -13,25 +13,29 @@ import java.util.List;
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath());
+//        response.sendRedirect(request.getContextPath());
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = getUserData(request);
-        String stringUser = findUser(request);
-        if (user.getUsername().equals(stringUser)) {
-            response.sendRedirect("signup-success");
+        User userFromContext = findUser(request);
+        if (user.getUsername().equals(userFromContext.getUsername()) ||
+        user.getPassword().equals(userFromContext.getPassword())) {
+            response.sendRedirect("login-success");
         } else {
-            response.sendRedirect("signup-error");
+            response.sendRedirect("login-error");
         }
     }
 
-    private String findUser(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        String stringUser;
-        stringUser = (String) getServletContext().getAttribute(username);
-        return stringUser;
+    private User findUser(HttpServletRequest request) {
+        String usernameParameter = request.getParameter("username");
+        String passwordParameter = request.getParameter("password");
+        String username = (String) getServletContext().getAttribute(usernameParameter);
+        String password = (String) getServletContext().getAttribute(passwordParameter);
+//        return new User(usernameParameter, passwordParameter);
+        return new User(username, password);
     }
     
     private User getUserData(HttpServletRequest request) {
