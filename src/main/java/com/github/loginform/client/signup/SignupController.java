@@ -1,7 +1,6 @@
 package com.github.loginform.client.signup;
 
 import com.github.loginform.domain.api.UserRegistration;
-import com.github.loginform.domain.api.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -12,7 +11,6 @@ import java.util.List;
 
 @WebServlet("/signup")
 public class SignupController extends HttpServlet {
-    private final UserService userService = new UserService();
 
     @Override
     public void init() {
@@ -28,12 +26,9 @@ public class SignupController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserRegistration userRegistration = getUserData(request);
         List<UserRegistration> users = (List<UserRegistration>) getServletContext().getAttribute("users");
-        userService.register(userRegistration);
         if (checkIfParameterIsUnique(userRegistration, users)) {
             response.sendRedirect("signup-success");
             users.add(userRegistration);
-            ServletContext servletContext = getServletContext();
-            servletContext.setAttribute(userRegistration.getUsername(), userRegistration.getPassword());
         } else {
             response.sendRedirect("signup-error");
         }

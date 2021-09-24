@@ -8,7 +8,7 @@
 <body>
     <div class="center">
         <h2>An error occurred</h2>
-        <p>The wrong username or password has been enterd</p>
+        <p>The wrong username or password has been entered</p>
         <a href="${pageContext.request.contextPath}/login">
             <input class="back-to-page" type="submit" value="Back to the login page">
         </a>
