@@ -1,0 +1,9 @@
+<Context>
+    <Resource name="jdbc/loginform"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              username="root"
+              password="password"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/loginform?serverTimezone=UTC"/>
+</Context>
