@@ -3,7 +3,7 @@
               type="javax.sql.DataSource"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               username="root"
-              password="password"
+              password="admin"
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/loginform?serverTimezone=UTC"/>
 </Context>

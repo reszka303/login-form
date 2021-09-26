@@ -20,32 +20,32 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = getUserData(request);
-        ServletContext servletContext = getServletContext();
-        List<UserRegistration> userRegistrations =
-                (List<UserRegistration>) servletContext.getAttribute("users");
-        if (checkIfParameterIsUnique(user, userRegistrations)) {
-            response.sendRedirect("login-success");
-        } else {
-            response.sendRedirect("login-error");
-        }
+//        User user = getUserData(request);
+//        ServletContext servletContext = getServletContext();
+//        List<UserRegistration> userRegistrations =
+//                (List<UserRegistration>) servletContext.getAttribute("users");
+//        if (checkIfParameterIsUnique(user, userRegistrations)) {
+//            response.sendRedirect("login-success");
+//        } else {
+//            response.sendRedirect("login-error");
+//        }
     }
 
-    private boolean checkIfParameterIsUnique(User user, List<UserRegistration> users) {
-        if (users != null) {
-            for (UserRegistration userFromList : users) {
-                if (userFromList.getUsername().equals(user.getUsername()) &&
-                        userFromList.getPassword().equals(user.getPassword())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    private boolean checkIfParameterIsUnique(User user, List<UserRegistration> users) {
+//        if (users != null) {
+//            for (UserRegistration userFromList : users) {
+//                if (userFromList.getUsername().equals(user.getUsername()) &&
+//                        userFromList.getPassword().equals(user.getPassword())) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
-    private User getUserData(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        return new User(username, password);
-    }
+//    private User getUserData(HttpServletRequest request) {
+////        String username = request.getParameter("username");
+////        String password = request.getParameter("password");
+////        return new User(username, password);
+//    }
 }
