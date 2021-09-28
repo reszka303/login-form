@@ -12,8 +12,8 @@ public class DataSourceProvider {
 
     public static DataSource getDataSource() throws NamingException {
         if (dataSource == null) {
-            InitialContext initContext = new InitialContext();
-            Context envContext = (Context) initContext.lookup("java:comp/env");
+            Context initContext = new InitialContext();
+            Context envContext = (Context) initContext.lookup("java:comp/env/");
             dataSource = (DataSource) envContext.lookup("jdbc/loginform");
         }
         return dataSource;

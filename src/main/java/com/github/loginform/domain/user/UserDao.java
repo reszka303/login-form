@@ -23,14 +23,12 @@ public class UserDao {
     }
 
     private void saveUser(User user) {
-        // Java Text Block = String query = """
-        // """;
-        String query = """
-                INSERT INTO 
-                    loginform.user (username, email, password, registration_date)
-                VALUES
-                (?, ?, ?, ?)
-                """;
+        final String query = """
+                        INSERT INTO
+                            loginform.user (username, email, password, registration_date)
+                        VALUES
+                            (?, ?, ?, ?)
+                        """;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, user.getUsername());
@@ -48,12 +46,12 @@ public class UserDao {
     }
 
     private void saveUserRole(User user) {
-        String query = """
-                INSERT INTO 
-                    loginform.user_role (role_name)
-                VALUES
-                    (?)
-                """;
+        final String query = """
+                        INSERT INTO
+                            loginform.user_role (username)
+                        VALUES
+                            (?)
+                        """;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());

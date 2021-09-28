@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="styles/main.css">
 <nav class="navbar">
     <a href="${pageContext.request.contextPath}" class="logo">
         <i class="fas fa-sign-in-alt"></i>
@@ -11,7 +10,7 @@
 
         </c:when>
         <c:when test="${not empty pageContext.request.userPrincipal}">
-            <a href="${pageContext.request.contextPath}/logout" class="login-button">Wyloguj ${pageContext.request.userPrincipal.name}</a>
+            <a href="${pageContext.request.contextPath}/logout" class="login-button">Wyloguj ebocie</a>
         </c:when>
     </c:choose>
 </nav>

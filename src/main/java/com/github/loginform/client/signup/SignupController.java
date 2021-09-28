@@ -24,9 +24,7 @@ public class SignupController extends HttpServlet {
         UserRegistration userRegistration = getUserData(request);
         userService.register(userRegistration);
         response.sendRedirect(request.getContextPath());
-//        response.sendRedirect("signup-success");
     }
-
 
     private UserRegistration getUserData(HttpServletRequest request) {
         String username = request.getParameter("username");

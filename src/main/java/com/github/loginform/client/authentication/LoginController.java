@@ -1,51 +1,23 @@
 package com.github.loginform.client.authentication;
 
-import com.github.loginform.domain.api.UserRegistration;
-import com.github.loginform.domain.user.User;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.HttpMethodConstraint;
+import jakarta.servlet.annotation.ServletSecurity;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/login")
+@ServletSecurity(
+        httpMethodConstraints = {
+                @HttpMethodConstraint(value = "GET", rolesAllowed = "USER")
+        }
+)
 public class LoginController extends HttpServlet {
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        response.sendRedirect(request.getContextPath());
-        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect(request.getContextPath());
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        User user = getUserData(request);
-//        ServletContext servletContext = getServletContext();
-//        List<UserRegistration> userRegistrations =
-//                (List<UserRegistration>) servletContext.getAttribute("users");
-//        if (checkIfParameterIsUnique(user, userRegistrations)) {
-//            response.sendRedirect("login-success");
-//        } else {
-//            response.sendRedirect("login-error");
-//        }
-    }
-
-//    private boolean checkIfParameterIsUnique(User user, List<UserRegistration> users) {
-//        if (users != null) {
-//            for (UserRegistration userFromList : users) {
-//                if (userFromList.getUsername().equals(user.getUsername()) &&
-//                        userFromList.getPassword().equals(user.getPassword())) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-
-//    private User getUserData(HttpServletRequest request) {
-////        String username = request.getParameter("username");
-////        String password = request.getParameter("password");
-////        return new User(username, password);
-//    }
 }

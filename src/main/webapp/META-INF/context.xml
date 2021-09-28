@@ -4,6 +4,20 @@
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               username="root"
               password="admin"
-              driverClassName="com.mysql.jdbc.Driver"
+              driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/loginform?serverTimezone=UTC"/>
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           dataSourceName="jdbc/loginform"
+           localDataSource="true"
+           userTable="user"
+           userNameCol="username"
+           userCredCol="password"
+           userRoleTable="user_role"
+           roleNameCol="role_name">
+        <CredentialHandler
+                className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+                algorithm="SHA-256"/>
+    </Realm>
 </Context>
+
+

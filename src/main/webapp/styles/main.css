@@ -127,12 +127,6 @@ input[type="submit"]:hover {
     margin: -5px 0 30px;
 }
 
-/*do usunięcia po implementacji bazy danych*/
-.users-list li {
-    color: #e9f4fb;
-    list-style-type: none;
-}
-
 .logo {
     color: #ffa500;
     font-size: 2em;
@@ -149,6 +143,10 @@ input[type="submit"]:hover {
 
 a {
     text-decoration: none;
+}
+
+.login-button {
+    color: #ffa500;
 }
 
 

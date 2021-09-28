@@ -8,7 +8,7 @@
 <body>
     <div class="center">
         <h2>You have successfully logged in</h2>
-        <a href="${pageContext.request.contextPath}/login">
+        <a href="${pageContext.request.contextPath}">
             <input class="back-to-page" type="submit" value="Back to login page">
         </a>
     </div>

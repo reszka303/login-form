@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <title>LoginForm</title>
     <%@ include file="../segments/stylesheets.jsp" %>
